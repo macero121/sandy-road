@@ -21,12 +21,11 @@ function getCookie(c_name)
       }
 }
 
-var song = document.getElementsByClassName('audioPlayer')[0];
-console.log(song)
-var played = false;
-var tillPlayed = getCookie('timePlayed');
-function update()
-{
+var song = document.getElementById("YourVideo");
+const playPromise = song.play();
+if (playPromise !== null){
+    playPromise.catch(() => { song.play(); })
+}
     if(!played){
         if(tillPlayed){
         song.currentTime = tillPlayed;
